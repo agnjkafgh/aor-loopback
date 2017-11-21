@@ -11,8 +11,8 @@ export const fetchJson = (url, options = {}) => {
     if (options.user && options.user.authenticated && options.user.token) {
         requestHeaders.set('Authorization', options.user.token);
     } else {
-        let token = storage.load('lbtoken');
-        token = (token && token.id) || '';
+        let token = localStorage.getItem('lbtoken');
+        
         if (url.indexOf('?') >= 0) {
             url = url + '&access_token=' + token;
         } else {
